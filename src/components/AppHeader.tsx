@@ -1,7 +1,8 @@
-import { BookOpen, FileText, Users, Search, Bell, LogOut, Shield } from 'lucide-react';
+import { BookOpen, FileText, Users, Search, LogOut, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import RoleBadge from '@/components/RoleBadge';
+import NotificationBell from '@/components/NotificationBell';
 
 const AppHeader = () => {
   const { profile, userRole, signOut } = useAuth();
@@ -35,6 +36,7 @@ const AppHeader = () => {
               <span className="hidden md:inline">Utilizadores</span>
             </Link>
           )}
+          <NotificationBell />
           {userRole && <RoleBadge role={userRole} />}
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-medium text-primary-foreground">
             {profile?.display_name?.split(' ').map(n => n[0]).join('').slice(0, 2) || '?'}
